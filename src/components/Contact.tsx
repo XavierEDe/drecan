@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Globe } from 'lucide-react'
+import { Phone, Mail, MapPin } from 'lucide-react'
 
 const contacts = [
   {

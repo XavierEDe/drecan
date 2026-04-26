@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, ShieldCheck, TrendingDown, Calendar, Users } from 'lucide-react'
 import UrgencyBanner from './UrgencyBanner'
-import productsBg from '../assets/products-hero.jpg'
+const hero = "/products-hero.jpg"
 
 const trustHighlights = [
   {
@@ -37,7 +37,7 @@ export default function Hero() {
       {/* Product image background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${productsBg})` }}
+        style={{ backgroundImage: `url(${hero})` }}
       />
 
       {/* Deep green gradient — heavy on left for text legibility, fades right to show products */}

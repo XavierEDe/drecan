@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
-import logo from '../assets/logo.png'
+const logo = "/logo.png"
 
 const navLinks = [
   { label: 'Home', href: '/#', section: 'hero' },
@@ -118,12 +118,12 @@ export default function Navbar() {
         <div className="md:hidden bg-forest-900 border-t border-white/10 px-4 pb-6 pt-3 space-y-1">
           {navLinks.map((link) => (
             <Link
-              key={link.label}
-              to={link.href}
-              onClick={() => handleNavClick(link.href, link.section)}
+              key={label}
+              to={href}
+              onClick={() => handleNavClick(href, section)}
               className="block font-body text-base font-medium text-gray-200 hover:text-gold-400 px-3 py-2.5 rounded-lg hover:bg-white/5 transition"
             >
-              {link.label}
+              {label}
             </Link>
           ))}
           <div className="pt-3">
