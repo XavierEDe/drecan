@@ -23,7 +23,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  const handleNavClick = (href: string, section: string | null) => {
+  const handleNavClick = (section: string | null) => {
   setOpen(false)
 
   if (section === 'hero' && location.pathname === '/') {
@@ -76,14 +76,14 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
+          {navLinks.map(({ label, href, section }) => (
             <Link
-              key={link.label}
-              to={link.href}
-              onClick={() => handleNavClick(link.href, link.section)}
+              key={label}
+              to={href}
+              onClick={() => handleNavClick(section)}
               className="font-body text-sm font-medium text-gray-300 hover:text-gold-400 px-3 py-2 rounded-lg hover:bg-white/5 transition-all duration-150"
             >
-              {link.label}
+              {label}
             </Link>
           ))}
 
@@ -91,12 +91,7 @@ export default function Navbar() {
             href="https://wa.me/2349021649580?text=Hello%20Drecan%20Team%2C%20I%20would%20like%20to%20place%20an%20order%20for%20the%202026%20Project%20Feed%20The%20Nation%20package.%20Please%20provide%20me%20with%20more%20details."
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() =>
-              handleNavClick(
-                "https://wa.me/2349021649580?text=Hello%20Drecan%20Team%2C%20I%20would%20like%20to%20place%20an%20order%20for%20the%202026%20Project%20Feed%20The%20Nation%20package.%20Please%20provide%20me%20with%20more%20details.",
-                "whatsapp"
-              )
-            }
+            onClick={() => setOpen(false)}
             className="ml-3 btn-primary text-xs px-5 py-2.5"
           >
             Order Now
@@ -116,11 +111,11 @@ export default function Navbar() {
       {/* Mobile drawer */}
       {open && (
         <div className="md:hidden bg-forest-900 border-t border-white/10 px-4 pb-6 pt-3 space-y-1">
-          {navLinks.map((link) => (
+          {navLinks.map(({ label, href, section }) => (
             <Link
               key={label}
               to={href}
-              onClick={() => handleNavClick(href, section)}
+              onClick={() => handleNavClick(section)}
               className="block font-body text-base font-medium text-gray-200 hover:text-gold-400 px-3 py-2.5 rounded-lg hover:bg-white/5 transition"
             >
               {label}
@@ -129,7 +124,7 @@ export default function Navbar() {
           <div className="pt-3">
             <Link
               to="/#packages"
-              onClick={() => handleNavClick('/#packages', 'packages')}
+              onClick={() => handleNavClick('packages')}
               className="btn-primary w-full text-center text-sm"
             >
               Order Now
